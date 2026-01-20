@@ -1,158 +1,122 @@
-# 🎯 End-To-End Meeting Minutes Agent
+End-to-End Agentic AI Meeting Intelligence
 
-[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
-[![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-red.svg)](https://streamlit.io)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+An end-to-end Agentic AI system that transforms meeting audio and video into structured intelligence — including summaries, decisions, and action items — using LLMs, FFmpeg, and Streamlit.
 
-An intelligent AI-powered meeting minutes generator that transforms audio recordings and transcripts into comprehensive, actionable meeting summaries with automated action item tracking.
+This project demonstrates a real-world AI pipeline combining multimedia processing, speech transcription, and agent-based reasoning.
 
-## 🌟 Features
+Features
 
-### 🎤 Multi-Modal Input Support
-- **Audio File Upload**: Support for MP3, WAV, M4A, MP4, WebM formats
-- **Live Audio Recording**: Browser-based audio recording capability
-- **Direct Transcript Input**: Paste meeting transcripts directly
-- **FFmpeg Integration**: Automatic audio format conversion
+🎥 Audio & Video Input Support (MP3, WAV, MP4, MOV, AVI, WebM)
 
-### 🤖 AI-Powered Processing
-- **Google Gemini Integration**: Advanced natural language processing
-- **Intelligent Summarization**: Contextual meeting summaries
-- **Decision Extraction**: Automatically identifies key decisions
-- **Action Item Detection**: Smart action item generation with assignees and due dates
+🔊 Automatic Video → Audio Extraction using FFmpeg
 
-### 📊 Comprehensive Management
-- **Meeting History**: Complete record of all processed meetings
-- **Action Items Dashboard**: Interactive tracking with completion status
-- **Analytics**: Meeting insights and productivity metrics
-- **Agenda Coverage Analysis**: Tracks discussed vs. planned topics
+📝 Speech-to-Text Transcription
 
-## 🚀 Quick Start
+🧠 Agentic AI Reasoning to extract:
 
-### Prerequisites
-```bash
-# Install Python 3.8 or higher
-python --version
+Meeting summary
 
-# Install FFmpeg (required for audio processing)
-# Windows (using winget):
-winget install "FFmpeg (Essentials Build)"
+Decisions made
 
-# macOS (using Homebrew):
-brew install ffmpeg
+Action items with owners
 
-# Linux (Ubuntu/Debian):
-sudo apt update && sudo apt install ffmpeg
-```
+ Meeting history & analytics
 
-### Installation
+⚡ Interactive Streamlit UI
 
-1. **Clone the repository**
-```bash
-git clone https://github.com/AnshKumar6400/End-To-End-Video-Summarizer-Agentic-AI.git
-cd End-To-End-Video-Summarizer-Agentic-AI
-```
+🧩 Agentic Architecture (High-Level)
 
-2. **Install dependencies**
-```bash
+The system follows a multi-agent workflow:
+
+Input Agent
+Handles transcript, audio, or video input.
+
+Media Processing Agent
+Extracts audio from video using FFmpeg.
+
+Transcription Agent
+Converts audio into text using speech recognition.
+
+Reasoning Agent (LLM)
+Analyzes transcript to generate structured meeting intelligence.
+
+Persistence Agent
+Stores meetings, action items, and analytics.
+
+UI Agent
+Presents insights via Streamlit.
+
+🛠 Tech Stack
+
+Python
+
+Streamlit
+
+FFmpeg
+
+SpeechRecognition
+
+Google Gemini / LLM APIs
+
+SQLite
+
+Agent-based AI design
+
+▶️ How to Run Locally
+1️⃣ Clone the repository
+git clone https://github.com/mrcoolash/End-to-End-Agentic-AI-Meeting-Intelligence.git
+cd End-to-End-Agentic-AI-Meeting-Intelligence
+
+2️⃣ Create virtual environment (optional but recommended)
+python -m venv venv
+venv\Scripts\activate
+
+3️⃣ Install dependencies
 pip install -r requirements.txt
-```
 
-3. **Set up environment variables**
-```bash
-# Create a .env file in the project root
-echo "GOOGLE_API_KEY=your_google_api_key_here" > .env
-```
+4️⃣ Configure environment variables
 
-> 🔑 **Get your Google API Key**: Visit [Google AI Studio](https://makersuite.google.com/app/apikey) to obtain your Gemini API key.
+Create a .env file in the project root:
 
-4. **Run the application**
-```bash
+GOOGLE_API_KEY=your_google_api_key_here
+
+5️⃣ Ensure FFmpeg is installed
+
+Verify FFmpeg:
+
+ffmpeg -version
+
+
+If not installed, download from:
+https://www.gyan.dev/ffmpeg/builds/
+
+6️⃣ Run the application
 streamlit run app.py
-```
 
-5. **Access the app**
-Open your browser and navigate to `http://localhost:8501`
+⚙️ Configuration Notes
 
-## 🎮 Usage Guide
+.env, venv/, __pycache__/, meetings.db, and session_state.json are not committed
 
-### 1. Create a New Meeting
-1. Enter a descriptive meeting title
-2. Choose your input method:
-   - **Upload Audio**: Select and upload audio files
-   - **Record Audio**: Use browser recording (preview feature)
-   - **Paste Transcript**: Direct text input
+FFmpeg must be available in system PATH
 
-### 2. Audio Processing
-- Upload supported audio formats (WAV recommended)
-- Click "🎤 Transcribe Audio" to convert speech to text
-- Review and edit the generated transcript
+GitHub authentication uses Personal Access Tokens
 
-### 3. Generate Minutes
-- Add optional meeting agenda for coverage analysis
-- Click "🔄 Generate Meeting Minutes"
-- AI processes the content and generates:
-  - Executive summary
-  - Key decisions made
-  - Action items with assignments
-  - Agenda coverage report
+📌 Future Enhancements
 
-### 4. Manage Action Items
-- Track completion status
-- Update assignees and due dates
-- Mark items as completed
-- Export for external project management tools
+🔗 YouTube / URL-based video summarization
 
-## 🛠️ Technology Stack
+🧠 RAG-based long-term meeting memory
 
-- **Frontend**: Streamlit for interactive web interface
-- **AI Model**: Google Gemini AI for natural language processing
-- **Audio Processing**: SpeechRecognition + pydub + FFmpeg
-- **Database**: SQLAlchemy with SQLite for data persistence
-- **Session Management**: Streamlit session state with local storage
+👥 Speaker diarization
 
-## 📈 Performance
+🌍 Multilingual transcription
 
-- **Processing Speed**: ≤6 seconds target for transcript analysis
-- **Audio Support**: Up to 20,000 characters transcript length
-- **Storage**: Efficient SQLite storage with session persistence
-- **Scalability**: Single-user optimized, multi-user capable
+☁️ Cloud deployment (Streamlit Cloud / Hugging Face)
 
-## 🐛 Troubleshooting
+📅 Calendar & task integrations
 
-### Common Issues
+Author
 
-**Audio transcription fails**
-- Ensure FFmpeg is installed and in PATH
-- Try WAV format if other formats fail
-- Check audio quality and clarity
-
-**API errors**
-- Verify Google API key is correct
-- Check API quota and billing
-- Ensure internet connectivity
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📝 License
-
-This project is licensed under the MIT License.
-
-## 🙏 Acknowledgments
-
-- **Google Gemini AI** for powerful language processing
-- **Streamlit** for the excellent web framework
-- **Speech Recognition** library for audio processing
-- **SQLAlchemy** for robust data management
-
----
-
-<div align="center">
-
-**⭐ Star this repository if you find it helpful!**
-
-Made with ❤️ by [AnshKumar6400](https://github.com/AnshKumar6400)
-
-</div>
-
+Vishnu Ashrith
+Electronics & Communication Engineering
+AI / Machine Learning Enthusiast
